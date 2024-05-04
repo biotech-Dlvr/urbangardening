@@ -13,6 +13,7 @@
         font-family: Arial, sans-serif;
         line-height: 1.6;
         height: 50vh;
+        width: 100%;
         overflow-x: hidden;
     }
 
@@ -45,7 +46,6 @@
         }
     }
 
-    /* For desktop screens */
     @media only screen and (min-width: 1025px) {
         .header {
             width: 100%;
@@ -386,6 +386,18 @@
             width: 71%;
             height: 1730px;
         }
+
+        .honeycomb-cell:nth-child(4) {
+            position: relative;
+            left: 0;
+            bottom: 100px;
+        }
+
+        .honeycomb-cell:nth-child(5) {
+            position: relative;
+            left: 0;
+            bottom: 140px;
+        }
     }
 
     h3 {
@@ -715,7 +727,9 @@
 
         .aboutus {
             position: relative;
-            left: 28px;
+            left: -28px;
+            width: 98%;
+            overflow: hidden;
         }
 
         .parent-wrapper {
