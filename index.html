@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" async defer src="https://assets.pinterest.com/js/pinit.js"></script>
+    <title>Urban Gardening</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        height: 50vh;
+        overflow-x: hidden;
+    }
+
+    .header {
+        width: 100%;
+        padding-bottom: 366px;
+        filter: saturate(180%) sepia(12%);
+        text-align: center;
+        height: 110px;
+        opacity: 0.9;
+    }
+
+    .header svg {
+        display: inline-block;
+        position: absolute;
+        top: -2px;
+        left: 0px;
+        z-index: -1;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .header {
+            width: 90%;
+        }
+    }
+
+    @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        .header {
+            width: 95%;
+        }
+    }
+
+    /* For desktop screens */
+    @media only screen and (min-width: 1025px) {
+        .header {
+            width: 100%;
+        }
+    }
+
+    .all {
+        position: absolute;
+        top: 265px;
+        right: 11px;
+        display: flex;
+        perspective: 0px;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        .all {
+            position: relative;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    .all:hover {
+        perspective: 1000px;
+        transition: all 1.3s ease-in;
+        transform: perspective(10000px) rotateX(0deg);
+
+        .text {
+            opacity: 1;
+        }
+
+        &>div {
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .explainer {
+            opacity: 0;
+        }
+    }
+
+    .left,
+    .center,
+    .right,
+    .lefter,
+    .righter {
+        width: 100px;
+        height: 50px;
+        transform-style: preserve-3d;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        box-shadow: 0 0 20px 5px rgba(95, 145, 33, .6);
+        opacity: 1;
+        transition: all .3s ease;
+        transition-delay: 1s;
+        position: relative;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #5f9121;
+        cursor: pointer;
+        background-blend-mode: color-burn;
+
+        &:hover {
+            box-shadow: 0 0 30px 10px rgba(95, 145, 33, .6);
+            background-color: #cce2b0;
+        }
+    }
+
+    .lefter {
+        transform: translateX(-20px) translateZ(-50px) rotateY(-10deg);
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/474/original/house.png?1714789068);
+    }
+
+    .left {
+        transform: translateX(-10px) translateZ(-25px) rotateY(-5deg);
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/475/original/explore.png?1714789116);
+        background-size: 42%;
+    }
+
+    .center {
+        opacity: 1;
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/476/original/technology.png?1714789179);
+    }
+
+    .right {
+        transform: translateX(10px) translateZ(-25px) rotateY(5deg);
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/477/original/wedo.png?1714789222);
+    }
+
+    .righter {
+        transform: translateX(20px) translateZ(-50px) rotateY(10deg);
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/478/original/chat.png?1714789285);
+    }
+
+    .my-home {
+        transform: translateY(16px);
+        opacity: 1;
+        transition: all .3s ease;
+        bottom: 0;
+        left: 33px;
+        position: absolute;
+        color: #0c0c0c;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .my-text {
+        transform: translateY(16px);
+        opacity: 1;
+        transition: all .3s ease;
+        bottom: 0;
+        left: 22px;
+        position: absolute;
+        color: #0c0c0c;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .text {
+        width: 122px;
+        transform: translateY(15px);
+        opacity: 0;
+        transition: all .3s ease;
+        bottom: 0;
+        left: -11px;
+        position: absolute;
+        color: #0c0c0c;
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+    .explainer {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #fff;
+        transition: all .6s ease;
+        width: 100%;
+        height: 100%;
+        background-color: #5f9121;
+        border-radius: 10px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, .8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        position: relative;
+        bottom: -355px;
+        left: 300px;
+        justify-content: center;
+        width: 670px;
+        height: 330px;
+        margin: 10px;
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/479/original/urbangarden4.jpg?1714789337);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.9;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.8);
+        animation: morphing 10s infinite;
+        overflow: hidden;
+
+        &:hover {
+            animation-play-state: paused;
+        }
+    }
+
+    @media (max-width: 850px) {
+        .title {
+            position: relative;
+            left: 20px;
+            bottom: -137px;
+            width: 430px;
+            height: 190px;
+        }
+    }
+
+    .my-h {
+        font-weight: 950;
+        position: relative;
+        bottom: 7px;
+        left: 5px;
+        font-size: 46px;
+        color: rgb(117, 1, 128);
+        line-height: 1;
+        margin: 10px 0;
+        padding: 40px 0;
+        line-height: 2;
+        text-align: center;
+    }
+
+    @keyframes morphing {
+        0% {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        25% {
+            border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+        }
+
+        50% {
+            border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            box-shadow: -10px -5px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        75% {
+            border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+        }
+    }
+
+    .urbangarden {
+        position: relative;
+        top: -250px;
+        left: 170px;
+    }
+
+    section {
+        max-width: 100%;
+        min-height: 550px;
+        margin: 0 -13px;
+    }
+
+    h2 {
+        position: relative;
+        top: 200px;
+        left: 5px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1.5;
+        color: #1f0038;
+        margin-top: 30px;
+    }
+
+    .honeycomb {
+        display: grid;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+        max-width: 1200px;
+        height: 820px;
+        margin: 0 auto;
+        padding: 0;
+        position: relative;
+        top: 160px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-row-gap: 5px;
+    }
+
+    .honeycomb-cell {
+        clip-path: polygon(50% 3%, 100% 25%, 100% 65%, 50% 88%, 0% 65%, 0% 25%);
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center;
+        max-width: calc(86% - 1px);
+        height: 372px;
+        margin: 10px 20px 3px 20px;
+        position: relative;
+        padding: 0.5em;
+        text-align: center;
+        z-index: 1;
+        box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .honeycomb-cell:nth-child(1) {
+        grid-column: 0 / 3;
+        grid-row: 1 / 2;
+        position: relative;
+        left: 70px;
+    }
+
+    .honeycomb-cell:nth-child(2) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .honeycomb-cell:nth-child(3) {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+        position: relative;
+        right: 70px;
+    }
+
+    .honeycomb-cell:nth-child(4) {
+        grid-column: 1 / 2;
+        grid-row: 0 / 3;
+        position: relative;
+        left: 235px;
+        bottom: 140px;
+    }
+
+    .honeycomb-cell:nth-child(5) {
+        grid-column: 2 / 2;
+        grid-row: 0 / 3;
+        position: relative;
+        left: 166px;
+        bottom: 140px;
+    }
+
+    .cell {
+        text-align: center;
+        margin-bottom: 0.5em;
+    }
+
+    .honeycomb-cell:hover .cell {
+        display: none;
+    }
+
+    .honeycomb-cell:hover .detail {
+        display: block;
+        margin: 0 auto;
+        max-width: 75%;
+        padding: 2em;
+    }
+
+    .honeycomb-cell:hover .honeycomb-cell_image {
+        opacity: 0.3;
+    }
+
+
+    @media (max-width: 600px) {
+        h2 {
+            position: relative;
+            top: -50px;
+        }
+
+        .honeycomb {
+            position: relative;
+            top: -100px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0;
+            width: 71%;
+            height: 1730px;
+        }
+    }
+
+    h3 {
+        transform: translateY(-773%);
+        color: #a505f5;
+        font-size: 20px;
+        font-style: bold;
+        font-weight: 800;
+        background-color: white;
+        opacity: 0.8;
+    }
+
+    h4 {
+        position: relative;
+        bottom: 30px;
+        left: 5px;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1.5;
+        color: #1f0038;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .detail {
+        display: none;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #000000;
+        margin-top: 5px;
+        transform: translateY(-117%);
+    }
+
+    .explain {
+        bottom: -170px;
+        right: 3px;
+        color: black;
+        padding: 5px;
+        text-align: justify;
+    }
+
+    .flex-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .item {
+        flex: calc(20% - 10px);
+        margin: 0 0 10px 15px;
+
+        background-color: #f1f1f1;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        padding: 5px;
+        box-sizing: border-box;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .item:last-child {
+        margin-right: 0;
+    }
+
+    .item img {
+        height: auto;
+    }
+
+    .image-present {
+        position: relative;
+        top: -9px;
+        right: -810px;
+        width: 50%;
+        height: 50%;
+    }
+
+    h5 {
+        font-size: 18px !important;
+        position: relative;
+        top: 2px;
+        left: 0px;
+        margin-top: -40px;
+        text-align: center;
+    }
+
+    .present {
+        position: relative;
+        top: -1px;
+        left: 36px;
+        margin: 1px 15px;
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/473/original/about.jpg?1714788717);
+        background-size: cover;
+        max-width: 56%;
+        max-height: 50%;
+        padding: 155px 0;
+        opacity: 0.9;
+        z-index: 1;
+    }
+
+    .aboutus {
+        position: relative;
+        top: 9px;
+        left: 95px;
+        width: 531px;
+        font-size: 15px;
+        text-align: justify;
+    }
+
+    .parent-wrapper {
+        position: relative;
+        right: -855px;
+        top: -500px;
+        width: 400px;
+        height: 270px;
+        margin: -120px 10px 0;
+        z-index: 1;
+    }
+
+    .close-btn {
+        margin: 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .subscribe-wrapper {
+        position: absolute;
+        left: -30px;
+        right: -30px;
+        height: 155px;
+        padding: 45px;
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/480/original/subscribe.png?1714789426);
+        background-position-x: 272%;
+        background-position-y: -1px;
+        background-repeat: no-repeat;
+        background-color: #FFF;
+        color: #333;
+        box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .subscribe-wrapper h4 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        line-height: 28px;
+    }
+
+    .subscribe-wrapper input {
+        position: absolute;
+        bottom: 75px;
+        right: 30px;
+        border: none;
+        border-bottom: 1px solid #d4d4d4;
+        padding: 10px;
+        width: 65%;
+        background: transparent;
+        transition: all .25s ease;
+    }
+
+    .subscribe-wrapper input:focus {
+        outline: none;
+        border-bottom: 1px solid #a77cf4;
+    }
+
+    .subscribe-wrapper .submit-btn {
+        position: absolute;
+        border-radius: 30px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        background-color: #a77cf4;
+        color: #FFF;
+        padding: 12px 25px;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        right: -10px;
+        bottom: 77px;
+        cursor: pointer;
+        transition: all .25s ease;
+        box-shadow: -5px 6px 20px 0px rgba(51, 51, 51, 0.4);
+    }
+
+    .subscribe-wrapper .submit-btn:hover {
+        background-color: #8e62dc;
+    }
+
+    .contact {
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/481/original/title.jpg?1714789478);
+        opacity: 1;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 669px;
+        z-index: 1;
+    }
+
+    .form-container {
+        position: relative;
+        top: -540px;
+        left: 845px;
+        width: 43%;
+        box-sizing: content-box;
+    }
+
+    .contact-h {
+        position: relative;
+        top: 14px;
+        left: -109px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 1.5;
+        color: #1f0038;
+        margin: 5px 0 5px 0;
+        padding: 5px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-control {
+        background-color: #f2f6f8;
+        border-radius: 2rem;
+        border: none;
+        box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+        width: 70%;
+        height: 50px;
+
+        &:focus {
+            background-color: #f2f6f8;
+            border: none;
+            box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+        }
+    }
+
+    .message .form-control {
+        padding-left: 15px;
+        padding-top: 5px;
+        width: 68%;
+        padding-bottom: 150px;
+    }
+
+    form input,
+    form textarea {
+        margin-bottom: 10px;
+        margin-left: 5px;
+        background-color: #f2f6f8;
+        border-radius: 2rem;
+        border: none;
+        box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.11);
+        text-align: left;
+    }
+
+    form input[type="submit"] {
+        margin-top: 10px;
+    }
+
+    .btn.btn-primary {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: bold;
+        color: white;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        padding: 0 1rem;
+        border: none;
+        border-radius: 3rem;
+        background-color: #a77cf4;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn.btn-primary:hover:enabled {
+        box-shadow: 0 0.5em 0.5em -0.4em #de3cffba;
+        background-size: 100% 100%;
+        transform: translateY(-0.15em);
+    }
+
+    .social-icons {
+        width: 98%;
+        padding: 30px 14px;
+        background-color: #00506b;
+        text-align: center;
+    }
+
+    .social-icons a {
+        color: #fff;
+        line-height: 30px;
+        font-size: 30px;
+        margin: 0 5px;
+        text-decoration: none;
+    }
+
+    .social-icons a i {
+        line-height: 30px;
+        font-size: 30px;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+    }
+
+    .social-icons a:hover i {
+        box-shadow: 0px 0px 150px #000000;
+        z-index: 2;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1.5);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1.5);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1.5);
+        transition: all 200ms ease-in;
+        transform: scale(1.5);
+    }
+
+    @media (max-width: 600px) {
+        .present {
+            max-width: 90%;
+        }
+
+        .aboutus {
+            position: relative;
+            left: 28px;
+        }
+
+        .parent-wrapper {
+            position: relative;
+            width: 80%;
+            height: auto;
+            right: -10%;
+            top: 6%;
+        }
+
+        .contact {
+            height: 1230px;
+        }
+
+        .form-container {
+            position: relative;
+            top: 291px;
+            width: 80%;
+            left: 68px;
+            height: auto;
+        }
+
+        .contact-h {
+            left: 0;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+    }
+
+    .footer {
+        position: relative;
+        top: -50px;
+        text-align: center;
+        color: black;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+            <defs>
+                <pattern id="image-pattern" x="0" y="0" width="3" height="3">
+                    <image
+                        href="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/482/original/urbangarden3.jpg?1714789561"
+                        x="0" y="0" width="500" height="200" preserveAspectRatio="xMidYMid slice"></image>
+                </pattern>
+            </defs>
+            <path d="M0, 100 C150, 200 350,
+                        0 500, 100 L500, 00 L0, 0 Z" style="stroke:none; fill: url(#image-pattern);">
+            </path>
+        </svg>
+        <div class="all">
+            <div class="lefter">
+                <div class="my-home">Home</div>
+            </div>
+            <div class="left">
+                <div class="text"> <a href="urbangarden.html#first">Explore and Learn</a></div>
+            </div>
+            <div class="center">
+                <div class="explainer"><span>Hover me</span></div>
+                <div class="text"> <a href="urbangarden.html#second">New Technologies</a></div>
+            </div>
+            <div class="right">
+                <div class="text"> <a href="urbangarden.html#third">What We Do</a></div>
+            </div>
+            <div class="righter">
+                <div class="my-text"><a href="urbangarden.html#third">Contact us</a></div>
+            </div>
+        </div>
+        <div class="title">
+            <h1 class="my-h"> Urban Garden: Turn Cities <br> from Grey <br> to Green</h1>
+        </div>
+    </div>
+
+    <section id="first">
+        <h2 class="text-center">Exploring the World of Urban Gardening</h2>
+        <ul class="honeycomb">
+            <li class="honeycomb-cell">
+                <img class="honeycomb-cell_image"
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/483/original/urban-gardeners.jpg?1714789636"
+                    height="90%" width="92%" alt="Urban garden">
+                <h3 class="cell"> What is urban gardening?</h3>
+                <p class="detail">Urban gardening is the practice of growing plants in urban areas,
+                    often in small spaces such as
+                    rooftops,
+                    balconies, or community gardens. It can take many forms, from windowsills overflowing with herbs to
+                    rooftop gardens bursting with tomatoes.
+                </p>
+            </li>
+            <li class="honeycomb-cell">
+                <img class="honeycomb-cell_image"
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/484/original/benefit-2.jpg?1714789801"
+                    height="90%" width="92%" alt="Urban garden">
+                <h3 class="cell">Benefits of urban gardening</h3>
+                <p class="detail">Urban gardening has many benefits, including:increased access to fresh produce,
+                    improved air quality, reduced stress and increased community involvement. You can enjoy homegrown
+                    produce that's ripe and delicious.<br>
+                    <br>
+                </p>
+            </li>
+            <li class="honeycomb-cell">
+                <img class="honeycomb-cell_image"
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/485/original/start2.jpg?1714789855"
+                    height="90%" width="92%" alt="Urban garden">
+                <h3 class="cell">How to start?</h3>
+                <p class="detail">If you're interested in starting an urban garden, there are a few things you'll need
+                    to do:
+                    Choose a location, prepare the soil, select plants, water and fertilize regularly. <br> <br> <br>
+                </p>
+            </li>
+            <li class="honeycomb-cell">
+                <img class="honeycomb-cell_image"
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/486/original/container2.jpg?1714789894"
+                    height="90%" width="90%" alt="Urban garden">
+                <h3 class="cell">Creative Container</h3>
+                <p class="detail">One exciting aspect of urban gardening is the endless array of creative containers
+                    that can be used to grow plants. From
+                    repurposed furniture like old dressers and wooden crates to unconventional objects like rain
+                    boots or teapots, the
+                    possibilities are truly limitless.
+                </p>
+            </li>
+            <li class="honeycomb-cell">
+                <img class="honeycomb-cell_image"
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/487/original/challenge.jpg?1714789930"
+                    height="90%" width="90%" alt="Urban garden">
+                <h3 class="cell">What are the challenges?</h3>
+                <p class="detail"> limited space, sunlight scarcity, poor soil quality, water management, pests and
+                    diseases are some of the challenges. Even small challenges have solutions! By <a
+                        href="https://seedstl.org/tips-and-tricks/urban-agriculture-challenges-and-solutions-part-1/">planning
+                        strategically </a>, you can
+                    enjoy the benefits of urban gardening regardless of your limitations.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="second">
+        <h4>Green Innovation: Technologies Transforming Gardening</h2>
+            <div class="flex-content">
+                <div class="item">
+                    <p class="explain">
+                        The term hydroponics refers to ways of growing plants without soil. Instead, the plant nutrients
+                        are dissolved in water, and that nutrient solution is delivered to plant roots in various ways.
+                        Hydroponic units allow you to grow lots of plants in small spaces. Compared to traditional soil
+                        gardening, hydroponics can use up to less water. Plants can grow up to faster in hydroponic
+                        systems because they have constant access to water and nutrients. Since there's no soil
+                        involved, hydroponics minimizes the risk of weeds and soil-borne pests. Hydroponics allows for
+                        year-round cultivation, regardless of seasonal limitations. Indoor hydroponic systems can
+                        provide optimal growing conditions, including controlled temperature, lighting, and humidity.
+                        You can purchase a hydroponic unit or make one yourself: <a
+                            href="https://haje.medium.com/diy-hydroponics-on-the-cheap-43e2e0fd258b">DIY Hydroponics
+                        </a>
+                    </p>
+                    <div> <img
+                            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/488/original/Hydrophonics.jpg?1714789976"
+                            width="350px" height="230px" alt="Top Image" class="tech-image" />
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/489/original/systems.jpg?1714790015"
+                        width="350" height="230" alt="Top Image" class="tech-image" />
+
+                    <p class="explain">
+                        Indoor gardening systems have become increasingly popular in recent years, offering innovative
+                        ways to grow fresh herbs, vegetables, and even fruits indoors all year round. Here's a glimpse
+                        into what these new systems offer:
+                        <br> Smart features: Many systems are equipped with LED grow lights that provide the optimal
+                        spectrum for plant growth, and some can even adjust light intensity automatically. <br>
+                        Automated watering: These systems take the guesswork out of watering by providing a
+                        self-contained reservoir and automated watering mechanisms.<br>
+                        Easy maintenance: They often feature built-in reminders for adding nutrients or refilling the
+                        water reservoir.<br>
+                        Space-saving designs: Indoor systems come in various sizes and configurations to fit any living
+                        space, with vertical and countertop options available.
+
+                    </p>
+                </div>
+                <div class="item">
+                    <div>
+                        <p class="explain">
+                            Vertical gardening is a method of gardening that involves growing plants along vertical
+                            supports
+                            or structures instead of horizontally in the ground. Remember to consider factors such as
+                            sunlight, water requirements, and plant compatibility when
+                            planning your vertical garden. Each plant may have specific needs that should be taken into
+                            account.
+                            Vertical gardening offers a creative and efficient way to maximize your gardening space and
+                            create
+                            stunning displays.
+                            Vertical gardens are also known by different names, such as living walls, green walls,
+                            vertical
+                            walls, moss walls, or plant
+                            walls. These gardens can be installed in urban areas, indoors, or
+                            outdoors.
+                            This method is ideal for small balconies, patios, or even indoor spaces where
+                            traditional gardening might not be feasible.
+                        </p>
+                        <div><img
+                                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/490/original/vertical2.jpg?1714790079"
+                                width="350" height="230" alt="Top Image" class="tech-image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="third">
+        <div class="contact">
+            <div class="present">
+                <h5> What We Do<br> <br>
+                    Urban Greenscape solutions! <br> Cultivating Green Spaces in the City. </h5>
+                <p class="aboutus"> Urban Greenscape solutions
+                    brings the joy and benefits of gardening to urban environments. We
+                    specialize
+                    in creating and
+                    maintaining thriving gardens in balconies, rooftops, patios, and even small backyards.
+                    Our passionate team helps you transform your unused space into a beautiful and functional urban
+                    oasis.
+                    Whether you're a seasoned gardener or a curious beginner, we offer a
+                    variety of services
+                    to suit your needs, including: Garden design and installation, Plant selection and care, Container
+                    gardening solutions.
+                    <br> Do you want to give urban Gardening a try? Ready to grow your own piece of paradise? Let us
+                    design a
+                    beautiful and
+                    functional garden for you!
+                    Contact us today for a free consultation! We can help!
+                </p>
+            </div>
+            <div class="parent-wrapper">
+                <div class="subscribe-wrapper">
+                    <h4>Grow your knowledge! <br> Subscribe to our newsletter.</h4>
+                    <input type="email" name="email" class="subscribe-input" placeholder="Your e-mail">
+                    <div class="submit-btn">SUBMIT</div>
+                </div>
+            </div>
+            <div class="form-container">
+                <h2 class="contact-h">Contact Us</h2>
+                <form>
+                    <div class="form-group position-relative">
+                        <label for="formEmail" class="d-block text-left">
+                        </label>
+                        <input type="email" id="formEmail" class="text-left form-control form-control-lg thick"
+                            placeholder="E-mail">
+                    </div>
+
+                    <div class="form-group message">
+                        <textarea id="formMessage" class="d-block text-left form-control form-control-lg" rows="7"
+                            placeholder="Message"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" tabIndex="-1">Send message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#" title="facebook">
+                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            </a>
+            <a href="#" title="instagram">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="#" title="youtube">
+                <i class="fa fa-youtube-square" aria-hidden="true"></i>
+            </a>
+            <a href="#" title="linkedin">
+                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            </a>
+            <a href="#" title="pinterest">
+                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+            </a>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p class="text-center mt-5">
+            <a href="https://github.com/biotech-Dlvr" target="_blank">GitHub repository</a>
+            by Azar Delavari
+        </p>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
